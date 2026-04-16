@@ -64,3 +64,11 @@ tasto.forEach((bottone) => {
     }
   });
 });
+
+const barradiricerca = document.getElementById("search");
+barradiricerca.innerHTML = ` <form id="search-form" class="d-flex w-100" >
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>`;
+barradiricerca.style.width = "350px";
+barradiricerca.style.display = "block";
