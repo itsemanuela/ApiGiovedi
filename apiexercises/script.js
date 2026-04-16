@@ -68,4 +68,11 @@ different.addEventListener("click", (e) => {
 const tasto = document.querySelectorAll(".card .btn-group button:last-child");
 tasto.forEach((bottone) => {
   bottone.innerText = "Hide";
+  bottone.addEventListener("click", (e) => {
+    e.preventDefault();
+    const colonna = e.target.closest(".col-md-4");
+    if (colonna) {
+      colonna.remove();
+    }
+  });
 });
