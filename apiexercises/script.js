@@ -67,8 +67,30 @@ tasto.forEach((bottone) => {
 
 const barradiricerca = document.getElementById("search");
 barradiricerca.innerHTML = ` <form id="search-form" class="d-flex w-100" >
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input id= user-query class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button id=form-button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>`;
 barradiricerca.style.width = "350px";
 barradiricerca.style.display = "block";
+
+const form = document.getElementById("search-form");
+const input = document.getElementById("user-query");
+const buttonform = document.getElementById("form-button");
+buttonform.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const query = input.value;
+  if (query) {
+    fetch(`https://api.pexels.com/v1/search?query=${query}`, {
+      headers: { Authorization: apiKey },
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("errore", response.status);
+      }
+    });
+  } else {
+    console.log("barra di ricerca vuota");
+  }
+});
